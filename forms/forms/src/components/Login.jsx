@@ -1,9 +1,10 @@
 export default function Login() {
   function handleSubmit() {
+    event.preventDefault();
     console.log("submitted");
   }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h2>Login</h2>
 
       <div className="control-row">
@@ -21,7 +22,10 @@ export default function Login() {
       <p className="form-actions">
         <button className="button button-flat">Reset</button>
         {/* when we submit the form then site will reload again sue to usage of react only and to avoid that just set the type of button to button */}
-        <button type="button" className="button" onClick={handleSubmit}>
+        {/* <button type="button" className="button" onClick={handleSubmit}>
+          Login
+        </button> */}
+        <button className="button" >
           Login
         </button>
       </p>
