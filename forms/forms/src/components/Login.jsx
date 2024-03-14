@@ -1,11 +1,22 @@
 import { useState } from "react";
 
 export default function Login() {
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  // const [userEmail, setUserEmail] = useState("");
+  // const [userPassword, setUserPassword] = useState("");
+  const [enteredValues, setEnteredValues] = useState({
+    email: '',
+    password: '',
+  });
   function handleSubmit(event) {
     event.preventDefault();
     console.log("submitted");
+  }
+ //A generic and versatile function.
+  function inputChange(identifier, value) {
+    setEnteredValues(preValues => ({
+      ...preValues,
+      [identifier]: value
+    }))
   }
 
   function handleEmailChange(event) {
@@ -27,8 +38,8 @@ export default function Login() {
             id="email"
             type="email"
             name="email"
-            onChange={handleEmailChange}
-            value={userEmail}
+            onChange={(event) => handleEmailChange('email', event.target.value)}
+            value={enteredValues.email}
           />
         </div>
 
@@ -38,8 +49,8 @@ export default function Login() {
             id="password"
             type="password"
             name="password"
-            onChange={handlePasswordChange}
-            value={userPassword}
+            onChange={(event) => handlePasswordChange('password', event.target.value)}
+            value={enteredValues.password}
           />
         </div>
       </div>
