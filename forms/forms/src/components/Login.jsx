@@ -1,31 +1,38 @@
-import { useState } from "react";
-
+// import { useState } from "react";
+import { useRef } from "react";
 export default function Login() {
+  const email = useRef();
+  const password = useRef();
   // const [userEmail, setUserEmail] = useState("");
   // const [userPassword, setUserPassword] = useState("");
-  const [enteredValues, setEnteredValues] = useState({
-    email: '',
-    password: '',
-  });
+  // const [enteredValues, setEnteredValues] = useState({
+  //   email: '',
+  //   password: '',
+  // });
+
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("submitted");
-  }
- //A generic and versatile function.
-  function inputChange(identifier, value) {
-    setEnteredValues(preValues => ({
-      ...preValues,
-      [identifier]: value
-    }))
-  }
+    const enteredEmail = email.current.value;
+    const enteredPassword = password.current.value;
 
-  function handleEmailChange(event) {
-    setUserEmail(event.target.value);
+    console.log(enteredEmail, enteredPassword);
   }
+  
+  //A generic and versatile function.
+  // function inputChange(identifier, value) {
+  //   setEnteredValues(preValues => ({
+  //     ...preValues,
+  //     [identifier]: value
+  //   }))
+  // }
 
-  function handlePasswordChange(event) {
-    setUserPassword(event.target.value);
-  }
+  // function handleEmailChange(event) {
+  //   setUserEmail(event.target.value);
+  // }
+
+  // function handlePasswordChange(event) {
+  //   setUserPassword(event.target.value);
+  // }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -38,8 +45,9 @@ export default function Login() {
             id="email"
             type="email"
             name="email"
-            onChange={(event) => handleEmailChange('email', event.target.value)}
-            value={enteredValues.email}
+            ref={email}
+            // onChange={(event) => handleEmailChange('email', event.target.value)}
+            // value={enteredValues.email}
           />
         </div>
 
@@ -49,8 +57,9 @@ export default function Login() {
             id="password"
             type="password"
             name="password"
-            onChange={(event) => handlePasswordChange('password', event.target.value)}
-            value={enteredValues.password}
+            ref={password}
+            // onChange={(event) => handlePasswordChange('password', event.target.value)}
+            // value={enteredValues.password}
           />
         </div>
       </div>
