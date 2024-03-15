@@ -1,6 +1,8 @@
-// import { useState } from "react";
+import { useState } from "react";
 import { useRef } from "react";
 export default function Login() {
+  const [emailIsInvalid, setEmailIsInvalid] = useState(false);
+
   const email = useRef();
   const password = useRef();
   // const [userEmail, setUserEmail] = useState("");
@@ -15,9 +17,18 @@ export default function Login() {
     const enteredEmail = email.current.value;
     const enteredPassword = password.current.value;
 
-    console.log(enteredEmail, enteredPassword);
+    const emailIsvalid = enteredEmail.includes("@");
+
+    if (!emailIsvalid) {
+      setEmailIsInvalid(true);
+      return;
+    }
+    setEmailIsInvalid(false);
+
+    console.log("Sending http request ...");
+    // console.log(enteredEmail, enteredPassword);
   }
-  
+
   //A generic and versatile function.
   // function inputChange(identifier, value) {
   //   setEnteredValues(preValues => ({
@@ -49,6 +60,9 @@ export default function Login() {
             // onChange={(event) => handleEmailChange('email', event.target.value)}
             // value={enteredValues.email}
           />
+          <div className="control-error">
+            {emailIsInvalid && <p>Please enter correct email</p>}
+          </div>
         </div>
 
         <div className="control no-margin">
