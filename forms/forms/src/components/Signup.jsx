@@ -95,6 +95,7 @@ export default function Signup() {
         </div>
   
         <p className="form-actions">
+          {/* Here type reset is inbuilt functionality of jacaqScript to reset values */}
           <button type="reset" className="button button-flat">
             Reset
           </button>
