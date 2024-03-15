@@ -7,6 +7,8 @@ export default function Signup() {
     const data =Object.fromEntries(fd.entries());
     data.acquisition = acquisitionChannel;
     console.log(data);
+
+    // event.target.reset();    //It is another method and does the same as type of the button is reset.
   }
     return (
       <form onSubmit={handleSubmit}>

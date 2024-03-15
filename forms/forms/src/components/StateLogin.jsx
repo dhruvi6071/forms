@@ -12,6 +12,7 @@ export default function Login() {
     event.preventDefault();
 
     console.log(enteredValues);
+    email.current.value = '';
   }
 
   function handleInputChange(identifier, value) {
