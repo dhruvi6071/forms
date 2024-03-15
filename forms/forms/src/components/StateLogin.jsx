@@ -8,7 +8,11 @@ export default function Login() {
     password: "",
   });
 
-  const emailIsInvalid = enteredValues.email !== '' && !enteredValues.email.includes("@");
+  const [didEdit, setDidEdit] = useState({
+    email: false,
+    password: false
+  });
+  const emailIsInvalid = didEdit.email && !enteredValues.email.includes("@");
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -24,6 +28,12 @@ export default function Login() {
     }));
   }
 
+  function handleInputBlur(identifier) {
+    setDidEdit((prevEdit) => ({
+        ...prevEdit,
+        [identifier]: false
+    }));
+  }
   // function handleEmailChange(event) {
   //   setEnteredEmail(event.target.value);
   // }
@@ -43,6 +53,7 @@ export default function Login() {
             id="email"
             type="email"
             name="email"
+            onBlur={() => handleInputBlur('email')}  //the blur event is a built-in default browser event that will be fired whenever this input loses focus.
             onChange={(event) => handleInputChange("email", event.target.value)}
             value={enteredValues.email}
           />
