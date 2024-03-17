@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 export default function Signup() {
-
+  const [passwordAreNotEqual, setPasswordAreNotEqual] = useState(false);
+  event.preventDefault();
   function handleSubmit(event) {
-    const [passwordAreNotEqual, setPasswordAreNotEqual] = useState(false);
-    event.preventDefault();
+    
 
     const fd = new FormData(event.target); //To get access for the all values that are going to be inserted, every input and select fields must have "name" property.
-    const acquisitionChannel = fd.getAll("");
+    const acquisitionChannel = fd.getAll('acquistion');
     const data = Object.fromEntries(fd.entries());
     data.acquisition = acquisitionChannel;
 
