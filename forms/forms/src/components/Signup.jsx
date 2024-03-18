@@ -2,16 +2,16 @@ import { useState } from "react";
 
 export default function Signup() {
   const [passwordAreNotEqual, setPasswordAreNotEqual] = useState(false);
-  event.preventDefault();
+  
   function handleSubmit(event) {
+    event.preventDefault();
     
-
     const fd = new FormData(event.target); //To get access for the all values that are going to be inserted, every input and select fields must have "name" property.
-    const acquisitionChannel = fd.getAll('acquistion');
+    const acquisitionChannel = fd.getAll("acquistion");
     const data = Object.fromEntries(fd.entries());
     data.acquisition = acquisitionChannel;
 
-    if(data.password !== data['confirm-password']){
+    if (data.password !== data["confirm-password"]) {
       setPasswordAreNotEqual(true);
       return;
     }
@@ -44,7 +44,9 @@ export default function Signup() {
             required
             minLength={6}
           />
-          <div className="control-error">{passwordAreNotEqual && <p>Passwords should match</p>}</div>
+          <div className="control-error">
+            {passwordAreNotEqual && <p>Passwords should match</p>}
+          </div>
         </div>
       </div>
 

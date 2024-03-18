@@ -7,14 +7,14 @@ export default function Login() {
     value: emailValue,
     handleInputChange: handleEmailChange,
     handleInputBlur: handleEmailBlur,
-    hasError: emailHasError
-  } = useInput("", (value) => isEmail(value) && isNotEmpty(value));
+    hasError: emailHasError,
+  } = useInput('', (value) => isEmail(value) && isNotEmpty(value));
 
   const {
     value: passwordValue,
     handleInputChange: handlePasswordChange,
     handleInputBlur: handlePasswordBlur,
-    hasError: passwordhasError
+    hasError: passwordHasError,
   } = useInput('', (value) => hasMinLength(value, 6));
 
   // const [enteredEmail, setEnteredEmail] = useState('');
@@ -24,13 +24,13 @@ export default function Login() {
   //   didEdit.email &&
   //   !isEmail(enteredValues.email) &&
   //   !isNotEmpty(enteredValues.email);
-  const passwordIsInvalid =
-    didEdit.password && !hasMinLength(enteredValues.password, 6);
+  // const passwordIsInvalid =
+  //   didEdit.password && !hasMinLength(enteredValues.password, 6);
   function handleSubmit(event) {
     event.preventDefault();
 
-    if(emailHasError || passwordhasError){
-      return ;
+    if (emailHasError || passwordHasError) {
+      return;
     }
     console.log(emailValue, passwordValue);
     // email.current.value = "";
@@ -81,9 +81,9 @@ export default function Login() {
           type="password"
           name="password"
           onBlur={handlePasswordBlur} //the blur event is a built-in default browser event that will be fired whenever this input loses focus.
-          onChange={handlePasswordChange }
-          value={password}
-          error={passwordhasError && "Please enter a valid Password"}
+          onChange={handlePasswordChange}
+          value={passwordValue}
+          error={passwordHasError && 'Please enter a valid Password'}
         />
 
         {/* <div className="control no-margin">
